@@ -1,3 +1,4 @@
+<!-- infoファイルの読込み -->
 <?php $info = file_get_contents("info.txt"); ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -11,6 +12,7 @@
             <div>
                 <!-- ここから本文 -->
                 <h1>お知らせ</h1>
+                <!-- 改行コードをタグに置き換えるnl2br関数を利用 -->
                 <p><?php echo nl2br($info, false) ?></p>
             </div>
         </main>
