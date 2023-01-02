@@ -1,5 +1,5 @@
 <!-- infoファイルの読込み -->
-<?php $info = file_get_contents("info.txt"); ?>
+<?php $fp = fopen("info.txt", "r"); ?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -11,9 +11,23 @@
         <main role="main" class="container" style="padding:60px 15px 0">
             <div>
                 <!-- ここから本文 -->
-                <h1>お知らせ</h1>
-                <!-- 改行コードをタグに置き換えるnl2br関数を利用 -->
-                <p><?php echo nl2br($info, false) ?></p>
+                <h1>サークルサイト</h1>
+                <?php
+                    if ($fp){
+                        // ファイルが正しく開けたとき
+                        $title = fgets($fp); // ファイルから1行読込む
+                        if ($title){
+                            // 1行読込めたときはタイトル文字列をリンクにする
+                            echo '<p><a href="info.php">'.$title.'</a></p>';
+                        }else{
+                            // ファイルの中身が空だった時
+                            echo '<p>お知らせはありません。</p>';
+                        }
+                    }else{
+                        // ファイルが開けなかったとき
+                        echo '<p>お知らせはありません。</p>';
+                    }
+                ?>
             </div>
         </main>
 
