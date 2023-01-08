@@ -80,7 +80,7 @@
                                 （<?php echo $row['date'] ?>）
                                 <input type="hidden" name="id" value="<?php echo $row['id'] ?>"/>
                                 <input type="text" name="pass" placeholder="削除パスワード"/>
-                                <input type="submit" name="id" value="削除" class="btn btn-secondary"/>
+                                <input type="submit" value="削除" class="btn btn-secondary"/>
                             </form>
                         </div>
                     </div>
