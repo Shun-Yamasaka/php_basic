@@ -80,7 +80,7 @@
                     <div class="card">
                         <div class="card-header"><?php echo $row['title']? $row['title']: '（無題）'; ?></div>
                         <div class="card-body">
-                            <p class="card-text"><?php echo nl2br($row['body']) ?></p>
+                            <p class="card-text"><?php echo nl2br(htmlspecialchars($row['body'], ENT_QUOTES, 'UTF-8')) ?></p>
                         </div>
                         <div class="card-footer">
                             <form action="delete.php" method="post" class="form-inline">
