@@ -1,0 +1,14 @@
+#php -i でPostgreSQLがあるかを確認
+php -i | grep pdo
+
+#yum でインストール
+yum install php-pdo_pgsql
+
+#pg_hbaファイルでlocalhostを許可
+vi /var/lib/pgsql/9.5/data/pg_hba.conf
+------------------------------------------------------------------------------------------
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+------------------------------------------------------------------------------------------
