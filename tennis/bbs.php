@@ -1,4 +1,5 @@
 <?php
+    include 'includes/login.php';
     // 1ページに表示される書き込みの数
     $num = 10;
 

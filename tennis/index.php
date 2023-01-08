@@ -1,5 +1,8 @@
 <!-- infoファイルの読込み -->
-<?php $fp = fopen("info.txt", "r"); ?>
+<?php 
+    include 'includes/login.php';
+    $fp = fopen("info.txt", "r"); 
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
