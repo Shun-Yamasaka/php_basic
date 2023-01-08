@@ -17,6 +17,9 @@
         exit();
     }
 
+    // 名前をクッキーにセット
+    setcookie('name', $name, time() + 60*60*24*30);
+
     // DBに接続
     $dsn = 'pgsql:host=localhost port=5432 dbname=tennis';
     $user = 'pgadmin';

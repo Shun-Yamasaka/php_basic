@@ -36,6 +36,13 @@
     }catch( PDOException $e ){
         exit('エラー'.$e->getMessage());
     }
+
+    // クッキーを読込んでフォームの名前を設定する
+    if(isset($_COOKIE['name'])){
+        $name = $_COOKIE['name'];
+    }else{
+        $name ="";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -56,7 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label>名前</label>
-                        <input type="text" name="name" class="form-control"/>
+                        <input type="text" name="name" class="form-control" value="<?php echo $name ?>"/>
                     </div>
                     <div class="form-group">
                         <textarea name="body" class="form-control" rows="5"></textarea>
