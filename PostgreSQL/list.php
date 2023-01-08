@@ -26,14 +26,23 @@ $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
             <th scope="col">ID</th>
             <th scope="col">名称</th>
             <th scope="col">価格</th>
+            <td><a href="edit.php">新規登録</a></td>
         </tr>
     </thead>
     <tbody>
 <?php foreach($rows as $r): ?>
         <tr>
-            <td><?php echo htmlspecialchars($r['id']); ?></td>
-            <td><?php echo htmlspecialchars($r['name']); ?></td>
-            <td><?php echo htmlspecialchars(number_format($r['price'])); ?></td>
+            <td><?php echo htmlspecialchars($r['id'], ENT_QUOTES); ?></td>
+            <td><?php echo htmlspecialchars($r['name'], ENT_QUOTES); ?></td>
+            <td><?php echo htmlspecialchars(number_format($r['price']), ENT_QUOTES); ?></td>
+            <td>
+                <a href="edit.php?id=<?php echo rawurlencode($r['id']) ?>">変更</a>
+                <form action="do.php" method="post" onsubmit="return confirm('本当に削除しますか？');">
+                    <input type="hidden" name="mode" value="del"/>
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($r['id'], ENT_QUOTES) ?>"/>
+                    <input type="submit" value="削除"/>
+                </form>
+            </td>
         </tr>
 <?php endforeach; ?>
     </tbody>
