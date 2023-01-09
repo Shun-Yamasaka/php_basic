@@ -4,6 +4,13 @@
     $title = $_POST['title'];
     $body = $_POST['body'];
     $pass = $_POST['pass'];
+    $token = $_POST['token']; // CSRF対策
+
+    // CSRF対策：トークンが正しいか？
+    if($token != hash("sha256", session_id())){
+        header("Location:bbs.php");
+        exit();
+    }
 
     // 必須項目チェック（名前か本文が空ではないか？）
     if ($name == '' || $body == ''){

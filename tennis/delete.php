@@ -3,6 +3,13 @@
     // データの受け取り
     $id = intval($_POST['id']);
     $pass = $_POST['pass'];
+    $token = $_POST['token']; // CSRF対策
+
+    // CSRF対策：トークンが正しいか？
+    if($token != hash("sha256", session_id())){
+        header("Location:bbs.php");
+        exit();
+    }
 
     // 必須項目チェック
     if($id == '' || $pass == ''){
