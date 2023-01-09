@@ -23,6 +23,8 @@
             $stmt->execute();
 
             if($row = $stmt->fetch()){
+                // セッションID再作成
+                session_regenerate_id(true);
                 // ユーザが存在していたら、セッションにユーザIDをセット
                 $_SESSION['id'] = $row['id'];
                 header('Location: index.php');
